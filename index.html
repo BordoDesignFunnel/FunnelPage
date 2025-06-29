@@ -14,6 +14,9 @@
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   
+  <!-- Calendly -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  
   <style>
     * {
       margin: 0;
@@ -26,6 +29,20 @@
       color: #333;
       background-color: #fff;
       overflow-x: hidden;
+    }
+    
+    /* Background Pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
+        url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM0YzBkMGEiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyek0zNiAyNHYySDI0di0yaDF6Ii8+PC9nPjwvZz48L3N2Zz4=');
+      z-index: -1;
     }
     
     /* Urgency Banner */
@@ -59,58 +76,118 @@
       margin-top: 48px;
       position: relative;
       background: #f8f8f8;
+      height: 600px;
+      background-image: 
+        linear-gradient(to bottom, rgba(76,13,10,0.4), rgba(76,13,10,0.8)),
+        url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
-    .map-container {
-      height: 500px;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .map-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(76,13,10,0.95) 0%, rgba(76,13,10,0.7) 50%, transparent 100%);
-      padding: 60px 20px 40px;
+    .hero-content {
       text-align: center;
       color: white;
+      padding: 0 20px;
+      max-width: 900px;
+      animation: fadeInUp 1.2s ease;
     }
     
-    .map-overlay h1 {
-      font-size: 48px;
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero-content h1 {
+      font-size: 56px;
       font-weight: 300;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
       letter-spacing: -1px;
+      line-height: 1.2;
     }
     
-    .map-overlay p {
-      font-size: 20px;
+    .hero-content p {
+      font-size: 24px;
       opacity: 0.95;
       font-weight: 300;
+      margin-bottom: 30px;
+    }
+    
+    .hero-cta {
+      display: inline-block;
+      padding: 15px 40px;
+      background: white;
+      color: #4c0d0a;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.3);
     }
     
     /* Exclusive Offer Section */
     .offer-section {
-      padding: 80px 20px 40px;
+      padding: 100px 20px 80px;
       max-width: 1200px;
       margin: 0 auto;
       text-align: center;
       position: relative;
+      background: 
+        linear-gradient(to right, rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
+        url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
     
     .offer-section::before {
       content: '';
       position: absolute;
-      top: 0;
+      top: -50px;
       left: 50%;
       transform: translateX(-50%);
       width: 100px;
-      height: 3px;
-      background: #4c0d0a;
+      height: 100px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .offer-section::after {
+      content: '£500';
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: #4c0d0a;
+      z-index: 1;
     }
     
     .section-badge {
@@ -171,6 +248,9 @@
       padding: 60px 20px;
       background: #f9f9f9;
       position: relative;
+      background-image: 
+        linear-gradient(rgba(249,249,249,0.95), rgba(249,249,249,0.95)),
+        url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZGRkZGRkIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiIC8+PC9zdmc+');
     }
     
     .value-section::before {
@@ -270,6 +350,95 @@
       background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
     }
     
+    /* Portfolio Showcase Section */
+    .portfolio-section {
+      padding: 80px 20px;
+      background: white;
+    }
+    
+    .portfolio-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .portfolio-header h2 {
+      font-size: 48px;
+      font-weight: 300;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .portfolio-header p {
+      font-size: 20px;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      aspect-ratio: 4/3;
+    }
+    
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(76,13,10,0.9) 0%, transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 30px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    }
+    
+    .portfolio-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+    
+    .portfolio-info h3 {
+      color: white;
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    
+    .portfolio-info p {
+      color: rgba(255,255,255,0.9);
+      font-size: 16px;
+    }
+    
     /* Animated Spots Counter */
     .spots-section {
       padding: 80px 20px;
@@ -349,6 +518,107 @@
       50% { opacity: 0.3; }
     }
     
+    /* Testimonials Section */
+    .testimonials-section {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .testimonials-section::before {
+      content: '"';
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 300px;
+      color: rgba(76,13,10,0.05);
+      font-family: Georgia, serif;
+      z-index: 0;
+    }
+    
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .testimonials-header h2 {
+      font-size: 48px;
+      font-weight: 300;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .testimonial-card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+    
+    .testimonial-rating {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 20px;
+    }
+    
+    .testimonial-rating i {
+      color: #ffd700;
+      font-size: 18px;
+    }
+    
+    .testimonial-text {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 25px;
+      font-style: italic;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .testimonial-info h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 3px;
+    }
+    
+    .testimonial-info p {
+      font-size: 14px;
+      color: #999;
+    }
+    
     /* Enhanced Form Section */
     .form-section {
       padding: 80px 20px;
@@ -365,7 +635,23 @@
       max-width: 700px;
       margin: 0 auto;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
+    }
+    
+    /* Trust Seal */
+    .form-container::after {
+      content: '100% SECURE';
+      position: absolute;
+      top: -20px;
+      right: 30px;
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
     }
     
     .form-container::before {
@@ -519,6 +805,78 @@
       box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
     }
     
+    /* Calendly Success Section */
+    .calendly-success-section {
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+      margin-top: -20px;
+    }
+    
+    .calendly-header {
+      margin-bottom: 30px;
+    }
+    
+    .calendly-inline-widget {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      background: white;
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Premium Hover Effects */
+    a, button {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Section Animations */
+    section {
+      animation: fadeIn 0.8s ease;
+    }
+    
+    /* Enhanced Form Focus States */
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #4c0d0a;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(76, 13, 10, 0.1);
+      transform: translateY(-1px);
+    }
+    
+    /* Input Validation Styles */
+    .form-group input:valid,
+    .form-group select:valid {
+      border-color: #4CAF50;
+    }
+    
+    .form-group input:invalid:not(:placeholder-shown),
+    .form-group select:invalid:not(:placeholder-shown) {
+      border-color: #f44336;
+    }
+    
     /* Loading Spinner */
     .loading-spinner {
       display: none;
@@ -534,6 +892,91 @@
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
+    }
+    
+    /* Location Section */
+    .location-section {
+      padding: 80px 20px;
+      background: #f8f8f8;
+    }
+    
+    .location-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    
+    .location-info h2 {
+      font-size: 42px;
+      font-weight: 300;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .location-info p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 30px;
+    }
+    
+    .location-details {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    
+    .location-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .location-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .location-item i {
+      width: 40px;
+      height: 40px;
+      background: #4c0d0a;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 18px;
+    }
+    
+    .location-item div h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 3px;
+      color: #333;
+    }
+    
+    .location-item div p {
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+    }
+    
+    .location-visual {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    
+    .location-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     
     /* Trust Badges */
@@ -612,6 +1055,19 @@
         grid-template-columns: repeat(3, 1fr);
         max-width: 800px;
       }
+      
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .location-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
     }
     
     @media (max-width: 768px) {
@@ -677,19 +1133,49 @@
         font-size: 14px;
         padding: 10px 20px;
       }
+      
+      .hero-content h1 {
+        font-size: 36px;
+      }
+      
+      .hero-content p {
+        font-size: 18px;
+      }
+      
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .portfolio-header h2,
+      .testimonials-header h2 {
+        font-size: 36px;
+      }
     }
     
     @media (max-width: 480px) {
-      .map-container {
-        height: 400px;
+      .hero-section {
+        height: 500px;
       }
       
-      .map-overlay h1 {
+      .hero-content h1 {
         font-size: 28px;
       }
       
+      .hero-content p {
+        font-size: 16px;
+      }
+      
+      .hero-cta {
+        padding: 12px 30px;
+        font-size: 14px;
+      }
+      
       .offer-section {
-        padding: 60px 20px 30px;
+        padding: 100px 20px 60px;
       }
       
       .offer-section h2 {
@@ -713,6 +1199,24 @@
         border-bottom: 1px solid #f0f0f0;
       }
       
+      .portfolio-header h2,
+      .testimonials-header h2,
+      .location-info h2 {
+        font-size: 28px;
+      }
+      
+      .portfolio-item {
+        aspect-ratio: 16/9;
+      }
+      
+      .testimonial-card {
+        padding: 30px 20px;
+      }
+      
+      .location-details {
+        padding: 20px;
+      }
+      
       .form-header h3 {
         font-size: 28px;
       }
@@ -720,6 +1224,55 @@
       .trust-badge {
         flex: 1 1 100%;
         justify-content: center;
+      }
+    }
+    /* Floating CTA */
+    .floating-cta {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #4c0d0a 0%, #621310 100%);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      box-shadow: 0 10px 30px rgba(76,13,10,0.4);
+      transition: all 0.3s ease;
+      z-index: 999;
+      display: none;
+      animation: slideInRight 0.5s ease;
+    }
+    
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .floating-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(76,13,10,0.5);
+      background: linear-gradient(135deg, #621310 0%, #4c0d0a 100%);
+      color: white;
+    }
+    
+    .floating-cta i {
+      margin-left: 8px;
+    }
+    
+    @media (max-width: 768px) {
+      .floating-cta {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 24px;
+        font-size: 14px;
       }
     }
   </style>
@@ -733,19 +1286,169 @@
 
   <!-- Hero Section with Map -->
   <section class="hero-section">
-    <div class="map-container">
-      <iframe
-        width="100%"
-        height="100%"
-        frameborder="0"
-        scrolling="no"
-        marginheight="0"
-        marginwidth="0"
-        src="https://maps.google.com/maps?q=30-34%20Rookery%20Rd%2C%20Handsworth%2C%20Birmingham%20B21%209NB&z=15&output=embed">
-      </iframe>
-      <div class="map-overlay">
-        <h1>Visit Our Award-Winning Birmingham Studio</h1>
-        <p>30-34 Rookery Rd, Handsworth, Birmingham B21 9NB</p>
+    <div class="hero-content">
+      <h1>Transform Your Space Into Something Extraordinary</h1>
+      <p>Award-Winning Birmingham Design Studio • Limited January Spots Available</p>
+      <a href="#consultationForm" class="hero-cta">Claim Your Free Consultation</a>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section class="location-section">
+    <div class="location-container">
+      <div class="location-info">
+        <h2>Visit Our Birmingham Studio</h2>
+        <p>Experience the BordoDesign difference at our state-of-the-art showroom, where creativity meets innovation. See material samples, explore design concepts, and walk through our VR experience center.</p>
+        <div class="location-details">
+          <div class="location-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Studio Address</h4>
+              <p>30-34 Rookery Rd, Handsworth, Birmingham B21 9NB</p>
+            </div>
+          </div>
+          <div class="location-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>Consultation Hours</h4>
+              <p>Monday - Saturday: 9:00 AM - 6:00 PM</p>
+            </div>
+          </div>
+          <div class="location-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Direct Line</h4>
+              <p>0121 234 5678</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="location-visual">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="BordoDesign Studio Interior">
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="testimonials-header">
+      <h2>What Our Clients Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">"BordoDesign transformed our dated Victorian home into a modern masterpiece. The VR experience during consultation was mind-blowing!"</p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Sarah Johnson" class="testimonial-avatar">
+          <div class="testimonial-info">
+            <h4>Sarah Johnson</h4>
+            <p>Homeowner, Edgbaston</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">"Professional, creative, and delivered on time. Our restaurant now has the wow factor we were looking for. Highly recommended!"</p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Michael Chen" class="testimonial-avatar">
+          <div class="testimonial-info">
+            <h4>Michael Chen</h4>
+            <p>Restaurant Owner</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">"The free consultation alone was worth thousands. They understood our vision perfectly and the results exceeded expectations."</p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Emma Thompson" class="testimonial-avatar">
+          <div class="testimonial-info">
+            <h4>Emma Thompson</h4>
+            <p>CEO, Tech Startup</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Showcase -->
+  <section class="portfolio-section">
+    <div class="portfolio-header">
+      <h2>Recent Transformations</h2>
+      <p>See how we've transformed ordinary spaces into extraordinary experiences</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Kitchen Design">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h3>Modern Kitchen</h3>
+            <p>£125,000 Renovation</p>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Living Room">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h3>Luxury Living Space</h3>
+            <p>£200,000 Project</p>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Contemporary Bedroom">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h3>Master Suite</h3>
+            <p>£85,000 Transformation</p>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Office Space">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h3>Corporate Office</h3>
+            <p>£350,000 Build</p>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dining Area">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h3>Dining Experience</h3>
+            <p>£95,000 Design</p>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bathroom Design">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h3>Spa Bathroom</h3>
+            <p>£65,000 Luxury Fit</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -842,23 +1545,44 @@
         <i class="fas fa-check-circle"></i> Success! We'll contact you within 24 hours to schedule your consultation.
       </div>
       
+      <!-- Calendly Success Section (Hidden by default) -->
+      <div class="calendly-success-section" id="calendlySection" style="display: none;">
+        <div class="calendly-header">
+          <i class="fas fa-check-circle" style="color: #4CAF50; font-size: 48px; margin-bottom: 20px;"></i>
+          <h3 style="font-size: 32px; margin-bottom: 10px; color: #333;">Perfect! Now Let's Schedule Your Consultation</h3>
+          <p style="font-size: 18px; color: #666; margin-bottom: 30px;">Your information has been saved. Choose your preferred time below:</p>
+        </div>
+        <!-- Calendly inline widget begin -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/bordo-design?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:630px;"></div>
+        <!-- Calendly inline widget end -->
+      </div>
+      
       <form id="consultationForm">
         <div class="form-row">
           <div class="form-group">
             <label for="fullName">Full Name *</label>
-            <input type="text" id="fullName" name="fullName" required>
+            <input type="text" id="fullName" name="fullName" required 
+                   pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+                   title="Please enter a valid full name (first and last name)"
+                   placeholder="John Smith">
           </div>
           
           <div class="form-group">
             <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                   title="Please enter a valid email address"
+                   placeholder="john.smith@example.com">
           </div>
         </div>
         
         <div class="form-row">
           <div class="form-group">
             <label for="phone">Phone Number *</label>
-            <input type="tel" id="phone" name="phone" required>
+            <input type="tel" id="phone" name="phone" required
+                   pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{4,6}$"
+                   title="Please enter a valid phone number"
+                   placeholder="07123 456789">
           </div>
           
           <div class="form-group">
@@ -952,6 +1676,11 @@
     </p>
   </footer>
 
+  <!-- Floating CTA Button -->
+  <a href="#consultationForm" class="floating-cta" id="floatingCTA">
+    Book Now <i class="fas fa-arrow-right"></i>
+  </a>
+
   <script>
     // Dynamic spots counter
     let spotsRemaining = 7;
@@ -999,7 +1728,7 @@
       const formData = new FormData(this);
       const data = Object.fromEntries(formData);
       data.timestamp = new Date().toISOString();
-      data.source = 'January Funnel Page';
+      data.source = 'Instagram Funnel';
       data.spotsRemainingAtSubmission = spotsRemaining;
       
       // Your Google Apps Script URL
@@ -1017,16 +1746,16 @@
         });
         
         // Since we can't read the response with no-cors, we assume success
-        // Show success message
-        successMsg.style.display = 'block';
-        this.reset();
+        // Hide the form and show Calendly
+        this.style.display = 'none';
+        document.getElementById('calendlySection').style.display = 'block';
+        
+        // Scroll to Calendly section
+        document.getElementById('calendlySection').scrollIntoView({ behavior: 'smooth', block: 'start' });
         
         // Update spots
         spotsRemaining--;
         updateSpots();
-        
-        // Scroll to success message
-        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
         
         // Track conversion if GTM is present
         if (typeof dataLayer !== 'undefined') {
@@ -1041,12 +1770,12 @@
       } catch (error) {
         console.error('Error:', error);
         // Even if there's an error, it might have succeeded (no-cors mode)
-        // Show success anyway
-        successMsg.style.display = 'block';
-        this.reset();
+        // Hide the form and show Calendly
+        this.style.display = 'none';
+        document.getElementById('calendlySection').style.display = 'block';
+        document.getElementById('calendlySection').scrollIntoView({ behavior: 'smooth', block: 'start' });
         spotsRemaining--;
         updateSpots();
-        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } finally {
         // Reset button
         setTimeout(() => {
@@ -1098,6 +1827,16 @@
           behavior: 'smooth'
         });
       });
+    });
+    
+    // Show floating CTA on scroll
+    window.addEventListener('scroll', function() {
+      const floatingCTA = document.getElementById('floatingCTA');
+      if (window.scrollY > 600) {
+        floatingCTA.style.display = 'flex';
+      } else {
+        floatingCTA.style.display = 'none';
+      }
     });
   </script>
 </body>
