@@ -1002,17 +1002,17 @@
       data.source = 'January Funnel Page';
       data.spotsRemainingAtSubmission = spotsRemaining;
       
-      // Google Sheets integration
-      const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwhsHIivGxtBvetMmSChQErV6-Kwc0v9nT5V1Bhr7k56HukLcvqw08QR5UTWGbhp0jS/exec'; // You'll need to set this up
+      // Google Sheets integration - REPLACE WITH YOUR ACTUAL URL
+      const GOOGLE_SHEETS_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'; // Replace this!
       
       try {
         // Send to Google Sheets
         const response = await fetch(GOOGLE_SHEETS_URL, {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
         });
 
         
@@ -1110,39 +1110,16 @@
     //    - Spots Remaining At Submission
     // 
     // 2. Go to Extensions > Apps Script
-    // 3. Replace the code with:
+    // 3. Replace the code with the following (with CORS support):
     /*
-    /**
-     * HTTP GET for quick smoke test.
-     * Visit your exec URL in a browser — you should see this message.
-     */
-    function doGet() {
-      return ContentService
-        .createTextOutput('✅ BordoDesign form endpoint is live!')
-        .setMimeType(ContentService.MimeType.TEXT)
-        .setHeader('Access-Control-Allow-Origin','*');
-    }
-    
-    /**
-     * HTTP POST handler for your landing-page form.
-     */
     function doPost(e) {
       try {
-        // 1️⃣ Open the sheet by ID
-        const SHEET_ID = '1EAAVQZE5zjyAGD5ZltbPmPwmGVy75eWl1po3L8EumW0dM1-JXQkp7Zh2';
-        const sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
-        
-        // 2️⃣ Parse JSON body
+        const sheet = SpreadsheetApp.openById('YOUR_SHEET_ID_HERE').getActiveSheet();
         const data = JSON.parse(e.postData.contents);
-        
-        // 3️⃣ Ensure a timestamp
-        if (!data.timestamp) {
-          data.timestamp = new Date().toISOString();
-        }
-        
-        // 4️⃣ Append the row
+        const timestamp = new Date().toISOString();
+
         sheet.appendRow([
-          data.timestamp,
+          timestamp,
           data.fullName,
           data.email,
           data.phone,
@@ -1150,95 +1127,52 @@
           data.budget,
           data.timeline,
           data.message,
-          data.source || 'Funnel Page',
-          data.spotsRemainingAtSubmission
+          data.source || '',
+          data.spotsRemainingAtSubmission || ''
         ]);
-        
-        // 5️⃣ (Optional) Email notification
-        try {
-          MailApp.sendEmail({
-            to: 'info@bordodesign.com', // Change this to your actual email
-            subject: 'New Consultation Request – ' + data.fullName,
-            htmlBody:
-              `<h3>New Request from ${data.fullName}</h3>` +
-              `<p><strong>Email:</strong> ${data.email}</p>` +
-              `<p><strong>Phone:</strong> ${data.phone}</p>` +
-              `<p><strong>Project Type:</strong> ${data.projectType}</p>` +
-              `<p><strong>Budget:</strong> ${data.budget}</p>` +
-              `<p><strong>Timeline:</strong> ${data.timeline}</p>` +
-              `<p><strong>Message:</strong> ${data.message || '—'}</p>` +
-              `<p><em>Received at ${data.timestamp}</em></p>`
-          });
-        } catch(mailErr) {
-          console.warn('MailApp.sendEmail failed:', mailErr);
-        }
-        
-        // 6️⃣ Return success + CORS header
+
         return ContentService
-          .createTextOutput(JSON.stringify({status:'success'}))
+          .createTextOutput(JSON.stringify({ status: 'success' }))
           .setMimeType(ContentService.MimeType.JSON)
-          .setHeader('Access-Control-Allow-Origin','*');
-          
-      } catch (err) {
-        // Return error + CORS header
+          .setHeader('Access-Control-Allow-Origin', '*')
+          .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+          .setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+      } catch (error) {
         return ContentService
-          .createTextOutput(JSON.stringify({
-            status:  'error',
-            message: err.toString()
-          }))
+          .createTextOutput(JSON.stringify({ status: 'error', message: error.toString() }))
           .setMimeType(ContentService.MimeType.JSON)
-          .setHeader('Access-Control-Allow-Origin','*');
+          .setHeader('Access-Control-Allow-Origin', '*')
+          .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+          .setHeader('Access-Control-Allow-Headers', 'Content-Type');
       }
     }
     
-    // 4. Deploy as Web App and get the URL
-    // 5. Your form is now connected and ready to receive submissions!
-
     function doGet() {
-  return ContentService
-    .createTextOutput('✅ Endpoint live')
-    .setMimeType(ContentService.MimeType.TEXT)
-    .setHeader('Access-Control-Allow-Origin', '*')
-    .setHeader('Access-Control-Allow-Methods', 'POST')
-    .setHeader('Access-Control-Allow-Headers', 'Content-Type');
-}
-
-function doPost(e) {
-  try {
-    const sheet = SpreadsheetApp.openById('YOUR_SHEET_ID_HERE').getActiveSheet();
-    const data = JSON.parse(e.postData.contents);
-    const timestamp = new Date().toISOString();
-
-    sheet.appendRow([
-      timestamp,
-      data.fullName,
-      data.email,
-      data.phone,
-      data.projectType,
-      data.budget,
-      data.timeline,
-      data.message,
-      data.source || '',
-      data.spotsRemainingAtSubmission || ''
-    ]);
-
-    return ContentService
-      .createTextOutput(JSON.stringify({ status: 'success' }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeader('Access-Control-Allow-Origin', '*')
-      .setHeader('Access-Control-Allow-Methods', 'POST')
-      .setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  } catch (error) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ status: 'error', message: error.toString() }))
-      .setMimeType(ContentService.MimeType.JSON)
-      .setHeader('Access-Control-Allow-Origin', '*')
-      .setHeader('Access-Control-Allow-Methods', 'POST')
-      .setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  }
-}
-
+      return ContentService
+        .createTextOutput('✅ Endpoint is live')
+        .setMimeType(ContentService.MimeType.TEXT)
+        .setHeader('Access-Control-Allow-Origin', '*')
+        .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        .setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    }
+    
+    // Optional: handle OPTIONS preflight
+    function doOptions() {
+      return ContentService.createTextOutput('')
+        .setMimeType(ContentService.MimeType.TEXT)
+        .setHeader('Access-Control-Allow-Origin', '*')
+        .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        .setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    }
+    */
+    
+    // 4. Deploy as Web App with these settings:
+    //    - Execute as: Me
+    //    - Who has access: Anyone
+    // 5. Copy the Web App URL and replace YOUR_GOOGLE_APPS_SCRIPT_URL_HERE above
+    // 6. Replace YOUR_SHEET_ID_HERE with your actual Google Sheet ID (from the URL)
+    // 7. Your form is now connected and ready to receive submissions!
   </script>
 </body>
 </html>
