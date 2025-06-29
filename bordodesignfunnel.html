@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book your exclusive design consultation with BordoDesign - Limited spots available">
+  
+  <title>Exclusive Design Consultation - BordoDesign</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      color: #333;
+      background-color: #fff;
+      overflow-x: hidden;
+    }
+    
+    /* Urgency Banner */
+    .urgency-banner {
+      background: linear-gradient(90deg, #4c0d0a 0%, #621310 100%);
+      color: white;
+      padding: 12px 0;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      font-size: 14px;
+      animation: pulse 2s infinite;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.85; }
+      100% { opacity: 1; }
+    }
+    
+    .urgency-banner i {
+      margin-right: 8px;
+      color: #ffd700;
+    }
+    
+    /* Hero Section with Map */
+    .hero-section {
+      margin-top: 48px;
+      position: relative;
+      background: #f8f8f8;
+    }
+    
+    .map-container {
+      height: 500px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .map-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(76,13,10,0.95) 0%, rgba(76,13,10,0.7) 50%, transparent 100%);
+      padding: 60px 20px 40px;
+      text-align: center;
+      color: white;
+    }
+    
+    .map-overlay h1 {
+      font-size: 48px;
+      font-weight: 300;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      letter-spacing: -1px;
+    }
+    
+    .map-overlay p {
+      font-size: 20px;
+      opacity: 0.95;
+      font-weight: 300;
+    }
+    
+    /* Exclusive Offer Section */
+    .offer-section {
+      padding: 80px 20px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    
+    .offer-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: #4c0d0a;
+    }
+    
+    .section-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #4c0d0a 0%, #621310 100%);
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(76,13,10,0.3);
+      font-weight: 500;
+    }
+    
+    .offer-section h2 {
+      font-size: 52px;
+      font-weight: 300;
+      margin-bottom: 25px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+    
+    .offer-section h2 span {
+      color: #4c0d0a;
+      font-weight: 500;
+      position: relative;
+    }
+    
+    .offer-section h2 span::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #4c0d0a;
+      transform: scaleX(0);
+      animation: underlineExpand 2s ease-out 0.5s forwards;
+    }
+    
+    @keyframes underlineExpand {
+      to { transform: scaleX(1); }
+    }
+    
+    .offer-section > p {
+      font-size: 20px;
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    
+    /* New Dynamic Value Props Grid */
+    .value-section {
+      padding: 60px 20px;
+      background: #f9f9f9;
+      position: relative;
+    }
+    
+    .value-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,128C672,107,768,85,864,96C960,107,1056,149,1152,154.7C1248,160,1344,128,1392,112L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>') no-repeat top center;
+      background-size: cover;
+      height: 80px;
+      z-index: 1;
+    }
+    
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      max-width: 1000px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .value-item {
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      transition: all 0.4s ease;
+      background: white;
+      cursor: pointer;
+    }
+    
+    .value-item:not(:nth-child(3n)) {
+      border-right: 1px solid #f0f0f0;
+    }
+    
+    .value-item:not(:nth-last-child(-n+3)) {
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .value-item:hover {
+      background: #4c0d0a;
+      transform: scale(1.05);
+      box-shadow: 0 10px 40px rgba(76,13,10,0.3);
+      z-index: 10;
+      border-color: transparent !important;
+    }
+    
+    .value-item:hover * {
+      color: white !important;
+    }
+    
+    .value-item:hover .value-number {
+      background: white;
+      color: #4c0d0a !important;
+    }
+    
+    .value-number {
+      width: 50px;
+      height: 50px;
+      background: #4c0d0a;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 auto 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .value-item h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      font-weight: 500;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+    
+    .value-item p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #666;
+      transition: color 0.3s ease;
+      margin: 0;
+    }
+    
+    /* Center item special styling */
+    .value-item:nth-child(5) {
+      background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+    }
+    
+    /* Animated Spots Counter */
+    .spots-section {
+      padding: 80px 20px;
+      text-align: center;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .spots-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(76,13,10,0.05) 0%, transparent 70%);
+      animation: spotsPulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes spotsPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+    }
+    
+    .spots-container {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .spots-number {
+      font-size: 72px;
+      color: #4c0d0a;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: inline-block;
+      position: relative;
+    }
+    
+    .spots-number::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: #4c0d0a;
+    }
+    
+    .spots-text {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+    
+    .spots-subtext {
+      font-size: 16px;
+      color: #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .spots-subtext i {
+      color: #d32f2f;
+      animation: blink 1s ease-in-out infinite;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    
+    /* Enhanced Form Section */
+    .form-section {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+      position: relative;
+    }
+    
+    .form-container {
+      background: white;
+      border: none;
+      border-radius: 20px;
+      padding: 50px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .form-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #4c0d0a 0%, #621310 50%, #4c0d0a 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .form-header h3 {
+      font-size: 36px;
+      font-weight: 300;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .form-header p {
+      color: #666;
+      font-size: 18px;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 0;
+    }
+    
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #333;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid #e5e5e5;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      background: #fafafa;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #4c0d0a;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(76, 13, 10, 0.1);
+    }
+    
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      margin: 30px 0;
+      padding: 20px;
+      background: #f8f8f8;
+      border-radius: 10px;
+    }
+    
+    .checkbox-group input[type="checkbox"] {
+      margin-right: 12px;
+      margin-top: 4px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, #4c0d0a 0%, #621310 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .submit-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(76, 13, 10, 0.3);
+    }
+    
+    /* Success Message */
+    .success-message {
+      display: none;
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+      animation: slideDown 0.5s ease;
+      box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
+    }
+    
+    /* Loading Spinner */
+    .loading-spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #4c0d0a;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Trust Badges */
+    .trust-section {
+      padding: 60px 20px;
+      background: white;
+      text-align: center;
+    }
+    
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 50px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      color: #333;
+      padding: 15px 25px;
+      background: #f8f8f8;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    
+    .trust-badge:hover {
+      background: #4c0d0a;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .trust-badge:hover i {
+      color: white;
+    }
+    
+    .trust-badge i {
+      font-size: 24px;
+      color: #4c0d0a;
+      transition: color 0.3s ease;
+    }
+    
+    /* Footer */
+    .footer {
+      background: #2f3236;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    
+    .footer p {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    
+    .footer a {
+      color: white;
+      text-decoration: none;
+      padding: 0 10px;
+      transition: color 0.3s ease;
+    }
+    
+    .footer a:hover {
+      color: #ffd700;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .value-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 800px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .urgency-banner {
+        font-size: 12px;
+        padding: 10px 5px;
+      }
+      
+      .map-overlay h1 {
+        font-size: 32px;
+      }
+      
+      .map-overlay p {
+        font-size: 16px;
+      }
+      
+      .offer-section h2 {
+        font-size: 36px;
+      }
+      
+      .value-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+      }
+      
+      .value-item {
+        padding: 30px 20px;
+      }
+      
+      .value-item:nth-child(odd):not(:last-child) {
+        border-right: 1px solid #f0f0f0;
+      }
+      
+      .value-item:nth-child(even) {
+        border-right: none !important;
+      }
+      
+      .value-item:not(:nth-last-child(-n+2)) {
+        border-bottom: 1px solid #f0f0f0;
+      }
+      
+      .spots-number {
+        font-size: 54px;
+      }
+      
+      .spots-text {
+        font-size: 20px;
+      }
+      
+      .form-container {
+        padding: 30px 20px;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .trust-badges {
+        gap: 20px;
+      }
+      
+      .trust-badge {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .map-container {
+        height: 400px;
+      }
+      
+      .map-overlay h1 {
+        font-size: 28px;
+      }
+      
+      .offer-section {
+        padding: 60px 20px 30px;
+      }
+      
+      .offer-section h2 {
+        font-size: 28px;
+      }
+      
+      .offer-section > p {
+        font-size: 16px;
+      }
+      
+      .value-grid {
+        grid-template-columns: 1fr;
+        border-radius: 15px;
+      }
+      
+      .value-item {
+        border-right: none !important;
+      }
+      
+      .value-item:not(:last-child) {
+        border-bottom: 1px solid #f0f0f0;
+      }
+      
+      .form-header h3 {
+        font-size: 28px;
+      }
+      
+      .trust-badge {
+        flex: 1 1 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Urgency Banner -->
+  <div class="urgency-banner">
+    <i class="fas fa-clock"></i>
+    <span id="urgency-text">Limited Time: January Design Consultations Now Open - Only <strong id="spots-count-banner">7</strong> Spots Remaining!</span>
+  </div>
+
+  <!-- Hero Section with Map -->
+  <section class="hero-section">
+    <div class="map-container">
+      <iframe
+        width="100%"
+        height="100%"
+        frameborder="0"
+        scrolling="no"
+        marginheight="0"
+        marginwidth="0"
+        src="https://maps.google.com/maps?q=30-34%20Rookery%20Rd%2C%20Handsworth%2C%20Birmingham%20B21%209NB&z=15&output=embed">
+      </iframe>
+      <div class="map-overlay">
+        <h1>Visit Our Award-Winning Birmingham Studio</h1>
+        <p>30-34 Rookery Rd, Handsworth, Birmingham B21 9NB</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exclusive Offer Section -->
+  <section class="offer-section">
+    <div class="section-badge">Exclusive January Offer</div>
+    <h2>Claim Your <span>Free £500 Design Consultation</span></h2>
+    <p>
+      For a limited time, we're offering complimentary premium consultations to select homeowners and businesses ready to transform their spaces in 2025. This exclusive offer includes everything you need to visualize your dream project.
+    </p>
+  </section>
+
+  <!-- Value Props in Grid -->
+  <section class="value-section">
+    <div class="value-grid">
+      <div class="value-item">
+        <div class="value-number">1</div>
+        <h3>90-Minute Session</h3>
+        <p>One-on-one time with our senior design team</p>
+      </div>
+      
+      <div class="value-item">
+        <div class="value-number">2</div>
+        <h3>Space Analysis</h3>
+        <p>Professional assessment of your property's potential</p>
+      </div>
+      
+      <div class="value-item">
+        <div class="value-number">3</div>
+        <h3>VR Experience</h3>
+        <p>Walk through your design in virtual reality</p>
+      </div>
+      
+      <div class="value-item">
+        <div class="value-number">4</div>
+        <h3>Custom Concepts</h3>
+        <p>Initial design ideas tailored to your style</p>
+      </div>
+      
+      <div class="value-item">
+        <div class="value-number">5</div>
+        <h3>Mood Boards</h3>
+        <p>Visual inspiration for materials and finishes</p>
+      </div>
+      
+      <div class="value-item">
+        <div class="value-number">6</div>
+        <h3>Budget Planning</h3>
+        <p>Realistic cost estimates for your project</p>
+      </div>
+      
+      <div class="value-item">
+        <div class="value-number">7</div>
+        <h3>Timeline Mapping</h3>
+        <p>Clear project phases and completion dates</p>
+      </div>
+      
+      <div class="value-item">
+        <div class="value-number">8</div>
+        <h3>No Obligation</h3>
+        <p>Take our insights to any contractor you choose</p>
+      </div>
+      
+      <div class="value-item">
+        <div class="value-number">9</div>
+        <h3>Design Report</h3>
+        <p>Complete proposal document to take home</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spots Counter -->
+  <section class="spots-section">
+    <div class="spots-container">
+      <div class="spots-number" id="spots-available">7</div>
+      <div class="spots-text">Consultation Spots Remaining</div>
+      <div class="spots-subtext">
+        <i class="fas fa-exclamation-circle"></i>
+        This offer expires January 31st, 2025
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <section class="form-section">
+    <div class="form-container">
+      <div class="form-header">
+        <h3>Reserve Your Free Consultation</h3>
+        <p>Takes only 60 seconds to complete</p>
+      </div>
+      
+      <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i> Success! We'll contact you within 24 hours to schedule your consultation.
+      </div>
+      
+      <form id="consultationForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="projectType">Project Type *</label>
+            <select id="projectType" name="projectType" required>
+              <option value="">Select your project type</option>
+              <option value="residential-new">Residential - New Build</option>
+              <option value="residential-renovation">Residential - Renovation</option>
+              <option value="commercial-office">Commercial - Office</option>
+              <option value="commercial-retail">Commercial - Retail</option>
+              <option value="commercial-hospitality">Commercial - Hospitality</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="budget">Project Budget</label>
+            <select id="budget" name="budget">
+              <option value="">Select budget range</option>
+              <option value="50-100k">£50,000 - £100,000</option>
+              <option value="100-250k">£100,000 - £250,000</option>
+              <option value="250-500k">£250,000 - £500,000</option>
+              <option value="500k+">£500,000+</option>
+              <option value="not-sure">Not sure yet</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="timeline">Start Timeline</label>
+            <select id="timeline" name="timeline">
+              <option value="">When do you plan to start?</option>
+              <option value="immediate">Ready to start now</option>
+              <option value="1-3months">Within 1-3 months</option>
+              <option value="3-6months">Within 3-6 months</option>
+              <option value="6months+">6+ months</option>
+              <option value="exploring">Just exploring</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group full-width">
+          <label for="message">Project Details (Optional)</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell us about your vision, special requirements, or any questions you have..."></textarea>
+        </div>
+        
+        <div class="checkbox-group">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">I agree to be contacted by BordoDesign regarding my consultation request and understand this is a limited-time offer</label>
+        </div>
+        
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span id="btnText">CLAIM MY FREE CONSULTATION NOW</span>
+          <div class="loading-spinner" id="loadingSpinner"></div>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Trust Section -->
+  <section class="trust-section">
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <i class="fas fa-shield-alt"></i>
+        <span>100% Secure</span>
+      </div>
+      <div class="trust-badge">
+        <i class="fas fa-award"></i>
+        <span>Award-Winning Studio</span>
+      </div>
+      <div class="trust-badge">
+        <i class="fas fa-users"></i>
+        <span>500+ Happy Clients</span>
+      </div>
+      <div class="trust-badge">
+        <i class="fas fa-star"></i>
+        <span>5-Star Reviews</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 BordoDesign Ltd. All rights reserved.</p>
+    <p>
+      <a href="tel:+441234567890">Call Us</a> | 
+      <a href="mailto:info@bordodesign.com">Email Us</a> | 
+      <a href="/privacy">Privacy Policy</a> |
+      <a href="/terms">Terms & Conditions</a>
+    </p>
+  </footer>
+
+  <script>
+    // Dynamic spots counter
+    let spotsRemaining = 7;
+    
+    function updateSpots() {
+      const spotElements = [
+        document.getElementById('spots-available'),
+        document.getElementById('spots-count-banner')
+      ];
+      
+      spotElements.forEach(el => {
+        if (el) el.textContent = spotsRemaining;
+      });
+      
+      // Add urgency color when low
+      if (spotsRemaining <= 3) {
+        document.getElementById('spots-available').style.color = '#d32f2f';
+        document.querySelector('.spots-subtext i').style.color = '#d32f2f';
+      }
+    }
+    
+    // Simulate dynamic spot reduction (remove in production)
+    setInterval(() => {
+      if (spotsRemaining > 2 && Math.random() > 0.8) {
+        spotsRemaining--;
+        updateSpots();
+      }
+    }, 45000); // Every 45 seconds
+    
+    // Form submission
+    document.getElementById('consultationForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+      const spinner = document.getElementById('loadingSpinner');
+      const successMsg = document.getElementById('successMessage');
+      
+      // Show loading state
+      btnText.style.display = 'none';
+      spinner.style.display = 'block';
+      submitBtn.disabled = true;
+      
+      // Collect form data
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
+      data.timestamp = new Date().toISOString();
+      data.source = 'January Funnel Page';
+      data.spotsRemainingAtSubmission = spotsRemaining;
+      
+      // Google Sheets integration
+      const GOOGLE_SHEETS_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'; // You'll need to set this up
+      
+      try {
+        // Send to Google Sheets
+        const response = await fetch(GOOGLE_SHEETS_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+        
+        // Show success
+        successMsg.style.display = 'block';
+        this.reset();
+        
+        // Update spots
+        spotsRemaining--;
+        updateSpots();
+        
+        // Scroll to success message
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Track conversion if GTM is present
+        if (typeof dataLayer !== 'undefined') {
+          dataLayer.push({
+            'event': 'formSubmission',
+            'formType': 'consultation',
+            'value': 500,
+            'spotsRemaining': spotsRemaining
+          });
+        }
+        
+      } catch (error) {
+        console.error('Error:', error);
+        alert('There was an error submitting your request. Please try again or call us directly.');
+      } finally {
+        // Reset button
+        setTimeout(() => {
+          btnText.style.display = 'block';
+          spinner.style.display = 'none';
+          submitBtn.disabled = false;
+        }, 1500);
+      }
+    });
+    
+    // Countdown timer for urgency
+    function updateCountdown() {
+      const now = new Date();
+      const endDate = new Date('2025-01-31T23:59:59');
+      const timeLeft = endDate - now;
+      
+      if (timeLeft > 0) {
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        
+        // Update urgency text periodically
+        if (days <= 7) {
+          document.getElementById('urgency-text').innerHTML = 
+            `<i class="fas fa-fire"></i> Final ${days} Days! Only <strong id="spots-count-banner">${spotsRemaining}</strong> consultation spots left!`;
+        }
+      }
+    }
+    
+    // Update countdown every hour
+    setInterval(updateCountdown, 3600000);
+    updateCountdown();
+    
+    // Add hover effect to value items
+    document.querySelectorAll('.value-item').forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+      });
+      
+      item.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+      });
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+  
+  <!-- Google Sheets Integration Script -->
+  <script>
+    // Instructions for Google Sheets integration:
+    // 1. Create a new Google Sheet with columns:
+    //    - Timestamp
+    //    - Full Name
+    //    - Email
+    //    - Phone
+    //    - Project Type
+    //    - Budget
+    //    - Timeline
+    //    - Message
+    //    - Source
+    //    - Spots Remaining At Submission
+    // 
+    // 2. Go to Extensions > Apps Script
+    // 3. Replace the code with:
+    /*
+    /**
+     * HTTP GET for quick smoke test.
+     * Visit your exec URL in a browser — you should see this message.
+     */
+    function doGet() {
+      return ContentService
+        .createTextOutput('✅ BordoDesign form endpoint is live!')
+        .setMimeType(ContentService.MimeType.TEXT)
+        .setHeader('Access-Control-Allow-Origin','*');
+    }
+    
+    /**
+     * HTTP POST handler for your landing-page form.
+     */
+    function doPost(e) {
+      try {
+        // 1️⃣ Open the sheet by ID
+        const SHEET_ID = '1EAAVQZE5zjyAGD5ZltbPmPwmGVy75eWl1po3L8EumW0dM1-JXQkp7Zh2';
+        const sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
+        
+        // 2️⃣ Parse JSON body
+        const data = JSON.parse(e.postData.contents);
+        
+        // 3️⃣ Ensure a timestamp
+        if (!data.timestamp) {
+          data.timestamp = new Date().toISOString();
+        }
+        
+        // 4️⃣ Append the row
+        sheet.appendRow([
+          data.timestamp,
+          data.fullName,
+          data.email,
+          data.phone,
+          data.projectType,
+          data.budget,
+          data.timeline,
+          data.message,
+          data.source || 'Funnel Page',
+          data.spotsRemainingAtSubmission
+        ]);
+        
+        // 5️⃣ (Optional) Email notification
+        try {
+          MailApp.sendEmail({
+            to: 'info@bordodesign.com', // Change this to your actual email
+            subject: 'New Consultation Request – ' + data.fullName,
+            htmlBody:
+              `<h3>New Request from ${data.fullName}</h3>` +
+              `<p><strong>Email:</strong> ${data.email}</p>` +
+              `<p><strong>Phone:</strong> ${data.phone}</p>` +
+              `<p><strong>Project Type:</strong> ${data.projectType}</p>` +
+              `<p><strong>Budget:</strong> ${data.budget}</p>` +
+              `<p><strong>Timeline:</strong> ${data.timeline}</p>` +
+              `<p><strong>Message:</strong> ${data.message || '—'}</p>` +
+              `<p><em>Received at ${data.timestamp}</em></p>`
+          });
+        } catch(mailErr) {
+          console.warn('MailApp.sendEmail failed:', mailErr);
+        }
+        
+        // 6️⃣ Return success + CORS header
+        return ContentService
+          .createTextOutput(JSON.stringify({status:'success'}))
+          .setMimeType(ContentService.MimeType.JSON)
+          .setHeader('Access-Control-Allow-Origin','*');
+          
+      } catch (err) {
+        // Return error + CORS header
+        return ContentService
+          .createTextOutput(JSON.stringify({
+            status:  'error',
+            message: err.toString()
+          }))
+          .setMimeType(ContentService.MimeType.JSON)
+          .setHeader('Access-Control-Allow-Origin','*');
+      }
+    }
+    
+    // 4. Deploy as Web App and get the URL
+    // 5. Your form is now connected and ready to receive submissions!
+  </script>
+</body>
+</html>
